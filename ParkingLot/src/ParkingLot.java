@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class ParkingLot {
+public class ParkingLot implements WithParkingCapability {
     private int capacity;
     private List<Car> cars;
     public ParkingLot(int capacity) {
@@ -9,6 +9,7 @@ public class ParkingLot {
         cars = new ArrayList<>();
     }
 
+    @Override
     public boolean park(Car car) {
         int remainRoom = capacity - cars.size();
         if (remainRoom > 0) {
@@ -18,6 +19,7 @@ public class ParkingLot {
         return false;
     }
 
+    @Override
     public boolean unpark(Car car) {
         if (cars.contains(car)) {
             cars.remove(car);
@@ -32,11 +34,9 @@ public class ParkingLot {
         T get(int used, int total);
     }
 
+    @Override
     public <T> T get(Usage<T> usage) {
         return usage.get(cars.size(), capacity);
     }
 
-    public int remaningCapacity() {
-        return capacity - cars.size();
-    }
 }

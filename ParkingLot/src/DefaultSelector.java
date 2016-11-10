@@ -7,7 +7,7 @@ public class DefaultSelector implements ParkingSelector {
     }
 
     @Override
-    public Optional<ParkingLot> selectParkingLot(List<ParkingLot> parkingLots) {
-        return parkingLots.stream().filter((parkingLot) -> parkingLot.get((a, b) -> b - a > 0)).findFirst();
+    public Optional<WithParkingCapability> selectParkingLot(List<WithParkingCapability> withParkingCapabilities) {
+        return withParkingCapabilities.stream().filter((parkingLot) -> parkingLot.get((a, b) -> b - a > 0)).findFirst();
     }
 }
