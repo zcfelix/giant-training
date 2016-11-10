@@ -45,4 +45,30 @@ public class ManagerTest {
         WithParkingCapability withParkingCapability = new Manager(new MaxRemainingSelector(), other, target);
         assertThat(withParkingCapability.park(new Car()), is(true));
     }
+
+    @Test
+    public void should_report_without_indent() {
+        Manager manager = new Manager(new ParkingLot(2), new ParkingLot(3));
+        manager.park(new Car());
+
+        String ret = manager.report(0);
+        String expected = "Parker:\n" + "  ParkingLot: 1/2\n" + "  ParkingLot: 3/3\n";
+
+        System.out.println(ret);
+        assertThat(ret, is(expected));
+    }
+
+    @Test
+    public void should_report_when_manager_have_both_manager_and_parking_lots() throws Exception {
+        Manager manager = new Manager(new Manager(new ParkingLot(4), new ParkingLot(5)), new ParkingLot(2), new ParkingLot(3));
+        manager.park(new Car());
+
+        String ret = manager.report(0);
+        String expected = "Parker:\n" + "  Parker:\n" + "    ParkingLot: 3/4\n" + "    ParkingLot: 5/5\n"
+                +  "  ParkingLot: 2/2\n" + "  ParkingLot: 3/3\n";
+
+        System.out.println(ret);
+        assertThat(ret, is(expected));
+
+    }
 }

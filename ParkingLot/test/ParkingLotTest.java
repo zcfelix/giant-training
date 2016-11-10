@@ -37,4 +37,29 @@ public class ParkingLotTest {
         assertThat(parkingLot.unpark(car), is(false));
         assertThat(parkingLot.get((u, t) -> t - u), is(1));
     }
+
+    @Test
+    public void should_get_report_without_indent() {
+        WithParkingCapability parkingLot = new ParkingLot(3);
+        parkingLot.park(new Car());
+
+        String expected = "ParkingLot: 2/3\n";
+        String ret = parkingLot.report(0);
+
+        System.out.println(ret);
+        assertThat(ret, is(expected));
+    }
+
+    @Test
+    public void should_get_report_with_indent() {
+        WithParkingCapability parkingLot = new ParkingLot(3);
+        parkingLot.park(new Car());
+
+        int indent = 2;
+        String expected = "  ParkingLot: 2/3\n";
+        String ret = parkingLot.report(indent);
+
+        System.out.println(ret);
+        assertThat(ret, is(expected));
+    }
 }

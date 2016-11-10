@@ -39,4 +39,12 @@ public class ParkingLot implements WithParkingCapability {
         return usage.get(cars.size(), capacity);
     }
 
+    @Override
+    public String report(int indent) {
+        String ret = "";
+        String indentString = new String(new char[indent]).replace("\0", " ");
+        ret = ret + indentString + "ParkingLot: " + (capacity - cars.size()) + "/" + capacity + "\n";
+        return ret;
+    }
+
 }

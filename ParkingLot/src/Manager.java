@@ -36,4 +36,16 @@ public class Manager implements WithParkingCapability {
         }
         return usage.get(used, total);
     }
+
+    @Override
+    public String report(int indent) {
+        String ret = "";
+        String indentString = new String(new char[indent]).replace("\0", " ");
+        ret = ret + indentString + "Parker:\n";
+
+        for (WithParkingCapability w : withParkingCapabilities) {
+            ret += w.report(indent + 2);
+        }
+        return ret;
+    }
 }
