@@ -41,4 +41,16 @@ public class ParkingSelectorTest {
         WithParkingCapability selected = defaultSelector.selectParkingLot(withParkingCapabilities).get();
         assertThat(selected, is(target));
     }
+
+    @Test
+    public void should_max_remaining_ratio_selector_return_max_remaining_ratio_parking_lot() {
+        ParkingSelector maxRemainingRatioSelector = new MaxRemaingRatioSelector();
+        WithParkingCapability target = new ParkingLot(1);
+        WithParkingCapability other = new ParkingLot(100);
+        other.park(new Car());
+        List<WithParkingCapability> withParkingCapabilities = Arrays.asList(other, target);
+
+        WithParkingCapability selected = maxRemainingRatioSelector.selectParkingLot(withParkingCapabilities).get();
+        assertThat(selected, is(target));
+    }
 }
