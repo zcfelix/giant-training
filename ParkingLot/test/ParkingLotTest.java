@@ -20,7 +20,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    public void should_be_able_to_unpark_when_car_parked() {
+    public void should_be_able_to_unpark_after_parking() {
         ParkingLot parkingLot = new ParkingLot(1);
         Car car = new Car();
         parkingLot.park(car);
@@ -28,7 +28,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    public void should_not_be_able_to_unpark_when_car_not_parked() {
+    public void should_not_be_able_to_unpark_without_parking() {
         ParkingLot parkingLot = new ParkingLot(1);
         Car car = new Car();
         assertThat(parkingLot.unpark(car), is(false));
