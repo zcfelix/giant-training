@@ -44,7 +44,7 @@ public class ParkingLotTest {
         parkingLot.park(new Car());
 
         String expected = "ParkingLot: 2/3\n";
-        String ret = parkingLot.report(0);
+        String ret = parkingLot.report(new Report(0));
 
         System.out.println(ret);
         assertThat(ret, is(expected));
@@ -57,7 +57,7 @@ public class ParkingLotTest {
 
         int indent = 2;
         String expected = "  ParkingLot: 2/3\n";
-        String ret = parkingLot.report(indent);
+        String ret = parkingLot.report(new Report(indent));
 
         System.out.println(ret);
         assertThat(ret, is(expected));
