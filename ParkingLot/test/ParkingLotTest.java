@@ -10,6 +10,7 @@ public class ParkingLotTest {
         ParkingLot parkingLot = new ParkingLot(1);
         Car car = new Car();
         assertThat(parkingLot.park(car), is(true));
+        assertThat(parkingLot.remaningCapacity(), is(0));
     }
 
     @Test
@@ -24,7 +25,9 @@ public class ParkingLotTest {
         ParkingLot parkingLot = new ParkingLot(1);
         Car car = new Car();
         parkingLot.park(car);
+        assertThat(parkingLot.remaningCapacity(), is(0));
         assertThat(parkingLot.unpark(car), is(true));
+        assertThat(parkingLot.remaningCapacity(), is(1));
     }
 
     @Test
@@ -32,5 +35,6 @@ public class ParkingLotTest {
         ParkingLot parkingLot = new ParkingLot(1);
         Car car = new Car();
         assertThat(parkingLot.unpark(car), is(false));
+        assertThat(parkingLot.remaningCapacity(), is(1));
     }
 }

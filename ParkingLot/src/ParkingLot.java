@@ -19,7 +19,24 @@ public class ParkingLot {
     }
 
     public boolean unpark(Car car) {
-        return cars.stream().anyMatch(c -> c == car);
+        if (cars.contains(car)) {
+            cars.remove(car);
+            return true;
+        }
+        return false;
     }
 
+    public interface Usage<T> {
+//        Usage<Integer> remaining = (u, t) -> t -u;
+
+        T get(int used, int total);
+    }
+
+    public <T> T get(Usage<T> usage) {
+        return usage.get(cars.size(), capacity);
+    }
+
+    public int remaningCapacity() {
+        return capacity - cars.size();
+    }
 }
