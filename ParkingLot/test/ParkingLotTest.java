@@ -44,22 +44,10 @@ public class ParkingLotTest {
         parkingLot.park(new Car());
 
         String expected = "ParkingLot: 2/3\n";
-        String ret = parkingLot.report(0);
+        String ret = parkingLot.report(new Report());
 
         System.out.println(ret);
         assertThat(ret, is(expected));
     }
 
-    @Test
-    public void should_get_report_with_indent() {
-        WithParkingCapability parkingLot = new ParkingLot(3);
-        parkingLot.park(new Car());
-
-        int indent = 2;
-        String expected = "  ParkingLot: 2/3\n";
-        String ret = parkingLot.report(indent);
-
-        System.out.println(ret);
-        assertThat(ret, is(expected));
-    }
 }
