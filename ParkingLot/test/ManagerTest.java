@@ -51,7 +51,7 @@ public class ManagerTest {
         Manager manager = new Manager(new ParkingLot(2), new ParkingLot(3));
         manager.park(new Car());
 
-        String ret = manager.report(new Report(0));
+        String ret = manager.report(0);
         String expected = "Parker:\n" + "  ParkingLot: 1/2\n" + "  ParkingLot: 3/3\n";
 
         System.out.println(ret);
@@ -63,7 +63,7 @@ public class ManagerTest {
         Manager manager = new Manager(new Manager(new ParkingLot(4), new ParkingLot(5)), new ParkingLot(2), new ParkingLot(3));
         manager.park(new Car());
 
-        String ret = manager.report(new Report(0));
+        String ret = manager.report(0);
         String expected = "Parker:\n" + "  Parker:\n" + "    ParkingLot: 3/4\n" + "    ParkingLot: 5/5\n"
                 +  "  ParkingLot: 2/2\n" + "  ParkingLot: 3/3\n";
 

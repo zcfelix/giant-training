@@ -5,5 +5,5 @@ public interface WithParkingCapability {
 
     <T> T get(ParkingLot.Usage<T> usage);
 
-    String report(Report report);
+    String report(int indent);
 }
